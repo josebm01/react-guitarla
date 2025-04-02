@@ -7,4 +7,4 @@ Install dependencies with npm
   cd react-guitarla
   npm install 
 ```
-    
+     
