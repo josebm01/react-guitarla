@@ -1,12 +1,8 @@
-import { useMemo } from 'react'
 
-export const Header = ({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }) => {
+export const Header = ({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal }) => {
 
 
-    //* state derivado - valor depende un state 
-    //* useMemo - se usa para evitar que se ejecute una función cada vez que se renderiza, solo lo hará cuando cambie el state que tiene como dependencia
-    const isEmpty = useMemo( () => cart.length === 0, [cart] )
-    const cartTotal = useMemo( () => cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart] )
+    //! NOTA: No se llama el hook useCart porque se duplicaría el state y no se recomienda
 
     return (
       <header className="py-5 header">
@@ -27,7 +23,7 @@ export const Header = ({ cart, removeFromCart, increaseQuantity, decreaseQuantit
 
                 <div id="carrito" className="bg-white p-3">
                   {
-                    isEmpty === 0 ? (
+                    isEmpty ? (
                       <p className="text-center">El carrito esta vacio</p>                  
                     ) : (
                       <>                      
